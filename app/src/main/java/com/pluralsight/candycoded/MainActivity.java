@@ -75,13 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected boolean onPrepareOptionsPanel(android.view.View view, android.view.Menu menu) {
-        return super.onPrepareOptionsPanel(view, menu);
-        Intent infoIntent = new Intent(this, InfoActivity.class);
-        startActivity(infoIntent);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
@@ -90,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
     // ***
     // TODO - Task 1 - Show Store Information Activity
     // ***
+
+    @Override
+    protected boolean onPrepareOptionsPanel(View view, Menu menu) {
+        Intent infoIntent = new Intent(this,InfoActivity.class);
+        startActivity(infoIntent);
+        return super.onPrepareOptionsPanel(view, menu);
+    }
 
     private void addCandiesToDatabase(Candy[] candies) {
         SQLiteDatabase db = candyDbHelper.getWritableDatabase();
